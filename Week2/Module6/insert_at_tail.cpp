@@ -14,9 +14,15 @@ public:
     }
 };
 
-void insert_at_tail(Node *temp, int val)
+void insert_at_tail(Node * &head, int val)
 {
     Node *newnode = new Node(val);
+    if(head == NULL){
+        head = newnode;
+        return;
+    }
+
+    Node * temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
