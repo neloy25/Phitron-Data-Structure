@@ -37,17 +37,16 @@ void print_list(Node *head)
 
 int main()
 {
-    Node * head = new Node(10);
-    Node * a = new Node(20);
-    Node * b = new Node(30);
-    Node * tail = new Node(40);
-
-    head->next = a;
-    a->next = b;
-    b->next = tail;
-
-    insert_at_tail(head, tail, 100);
-    insert_at_tail(head, tail, 200);
+    Node * head = NULL;
+    Node * tail = NULL;
+    int val;
+    while(true){
+        cin >> val;
+        if(val == -1){
+            break;
+        }
+        insert_at_tail(head, tail,val);
+    }
     print_list(head);
     return 0;
 }
