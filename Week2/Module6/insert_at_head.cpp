@@ -12,8 +12,13 @@ class Node{
     }
 };
 
-void insert_at_head(Node * &head,int val){
+void insert_at_head(Node * &head, Node * &tail, int val){
     Node * newnode = new Node(val);
+    if(head == NULL){
+        head = newnode;
+        tail = newnode;
+        return;
+    }
     newnode->next = head;
     head = newnode;
 }
