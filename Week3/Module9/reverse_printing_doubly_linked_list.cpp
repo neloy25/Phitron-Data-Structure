@@ -14,6 +14,14 @@ class Node{
     }
 };
 
+void print_backward(Node * tail){
+    Node * temp = tail;
+    while(temp != NULL){
+        cout << temp->val << ' ';
+        temp = temp->prev;
+    }
+}
+
 int main()
 {
     Node * head = new Node(10);
@@ -26,12 +34,7 @@ int main()
     a->next = tail;
     tail->prev = a;
 
-    Node * temp = tail;
-    while(temp != NULL){
-        cout << temp->val << ' ';
-        temp = temp->prev;
-    }
-
+    print_backward(tail);
     return 0;
 
 }
