@@ -33,7 +33,10 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
 
 void delete_at_tail(Node *&tail)
 {
-    
+    Node * delnode = tail;
+    tail = tail->prev;
+    tail->next = NULL;
+    delete delnode;
 }
 
 void input_list(Node *&head, Node *&tail)
@@ -75,6 +78,7 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
     input_list(head, tail);
+    delete_at_tail(tail);
     print_forward(head);
     cout << endl;
     print_backward(tail);
