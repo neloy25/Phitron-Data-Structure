@@ -21,8 +21,17 @@ void insert_at_head(Node * &head, Node * &tail,int val){
         tail = newnode;
         return;
     }
+    head->prev = newnode;
     newnode->next = head;
     head = newnode;
+}
+
+void print_backward(Node * tail){
+    Node * temp = tail;
+    while(temp != NULL){
+        cout << temp->val << ' ';
+        temp = temp->prev;
+    }
 }
 
 int main()
@@ -39,11 +48,8 @@ int main()
 
     insert_at_head(head,tail,5);
     insert_at_head(head,tail,0);
-    Node * temp = head;
-    while(temp != NULL){
-        cout << temp->val << ' ';
-        temp = temp->next;
-    }
+    
+    print_backward(tail);
 
     return 0;
 
