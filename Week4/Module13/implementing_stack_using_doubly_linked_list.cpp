@@ -33,36 +33,71 @@ class myStack
         tail = newnode;
     }
 
-    void delete_at_tail(Node *&tail)
+    void delete_at_tail(Node *&head, Node *&tail)
     {
         Node *delnode = tail;
+        if (head == tail)
+        {
+            head = NULL;
+            tail = NULL;
+            delete delnode;
+            return;
+        }
         tail = tail->prev;
         tail->next = NULL;
         delete delnode;
     }
 
-    Node * head = NULL;
-    Node * tail = NULL;
+    Node *head = NULL;
+    Node *tail = NULL;
+    int len = 0;
 
 public:
-
-    void push(int val) {
-        insert_at_tail(head,tail,val);
+    void push(int val)
+    {
+        insert_at_tail(head, tail, val);
+        len++;
     }
 
-    void pop(){
-        delete_at_tail(tail);
+    void pop()
+    {
+        delete_at_tail(head, tail);
+        len--;
     }
 
-    int top() {
-        return l.back();
+    int top()
+    {
+        return tail->val;
     }
 
-    int size() {
-        return l.size();
+    int size()
+    {
+        return len;
     }
 
-    bool empty() {
-        return l.empty();
+    bool empty()
+    {
+        return head == NULL;
     }
 };
+
+int main()
+{
+    myStack st;
+
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        cin >> val;
+        st.push(val);
+    }
+
+    while (!st.empty())
+    {
+        cout << st.top() << " " << st.size() << endl;
+        st.pop();
+    }
+    return 0;
+}
