@@ -75,9 +75,15 @@ void delete_at_any_pos(Node * &head, int idx){
     delete temp;
 }
 
-void delete_at_tail(Node *&tail)
+void delete_at_tail(Node *&head, Node *& tail)
 {
     Node * delnode = tail;
+    if(head == tail) {
+        head = NULL;
+        tail = NULL;
+        delete delnode;
+        return;
+    }
     tail = tail->prev;
     tail->next = NULL;
     delete delnode;

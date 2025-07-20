@@ -31,9 +31,15 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
     tail = newnode;
 }
 
-void delete_at_tail(Node *&tail)
+void delete_at_tail(Node *&head, Node *& tail)
 {
     Node * delnode = tail;
+    if(head == tail) {
+        head = NULL;
+        tail = NULL;
+        delete delnode;
+        return;
+    }
     tail = tail->prev;
     tail->next = NULL;
     delete delnode;
@@ -78,7 +84,7 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
     input_list(head, tail);
-    delete_at_tail(tail);
+    delete_at_tail(head, tail);
     print_forward(head);
     cout << endl;
     print_backward(tail);
