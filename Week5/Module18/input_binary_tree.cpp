@@ -21,6 +21,10 @@ Node *input_tree()
     queue<Node *> q;
     int v;
     cin >> v;
+    if(v == -1) {
+        Node * root = NULL;
+        return root;
+    }
     Node *root = new Node(v);
     q.push(root);
 
