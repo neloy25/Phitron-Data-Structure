@@ -21,8 +21,9 @@ Node *input_tree()
     queue<Node *> q;
     int v;
     cin >> v;
-    if(v == -1) {
-        Node * root = NULL;
+    if (v == -1)
+    {
+        Node *root = NULL;
         return root;
     }
     Node *root = new Node(v);
@@ -31,23 +32,25 @@ Node *input_tree()
     while (!q.empty())
     {
         Node *f = q.front();
+        q.pop();
+
         int l, r;
         cin >> l >> r;
-        Node *left_node = new Node(l);
-        Node *right_node = new Node(r);
-        q.pop();
 
         if (l != -1)
         {
+            Node *left_node = new Node(l);
             f->left = left_node;
             q.push(left_node);
         }
         if (r != -1)
         {
+            Node *right_node = new Node(r);
             f->right = right_node;
             q.push(right_node);
         }
     }
+
     return root;
 }
 
